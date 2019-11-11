@@ -1,0 +1,70 @@
+:root {
+	--site-max-width: 1000px;
+}
+
+:root {
+	--color_1: #cccccc;
+	--color_2: #5a6a7a;
+	--color_3: #aaaaaa;
+	--text_color_1: black;
+}
+
+body{
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-overflow-scrolling: touch;
+
+	max-width: var(--site-max-width);
+
+	background: var(--color_2);
+	padding: 0px;
+	margin: 0px auto;
+
+	font-size:14px;
+	line-height: 1.6;
+	font-family:"Trebuchet MS", verdana, arial, "Times New Roman", serif;
+}
+
+
+
+
+.float_left {
+	float: left;
+}
+.float_center {
+	float: left;
+}
+.float_right {
+	float: right;
+}
+.float_clear {
+	clear: both;
+}
+
+
+/*			Main Blocks			*/
+.header {
+	overflow: hidden;
+	border-bottom: 1px dashed grey;
+	background: #dadafa;
+}
+
+
+.left_menu {
+	background: #dadafa;
+	float: left;
+	width: 130px;
+}
+
+.content {
+	float: left;
+	width: calc(100% - 130px);
+	background: #dadada;
+}
+
+
+.footer {
+	overflow: hidden;
+	border-top: 1px dashed grey;
+	background: #dadada;
+}
