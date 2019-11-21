@@ -9,6 +9,9 @@
 	--text_color_1: black;
 }
 
+html{
+	height: 100%;
+}
 body{
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
@@ -16,7 +19,7 @@ body{
 
 	max-width: var(--site-max-width);
 
-	background: var(--color_2);
+	background: content-box radial-gradient(var(--color_1), var(--color_2));
 	padding: 0px;
 	margin: 0px auto;
 
@@ -46,12 +49,12 @@ body{
 .header {
 	overflow: hidden;
 	border-bottom: 1px dashed grey;
-	background: #dadafa;
+	background: var(--color_1);
 }
 
 
 .left_menu {
-	background: #dadafa;
+	background: var(--color_1);
 	float: left;
 	width: 130px;
 }
@@ -59,12 +62,13 @@ body{
 .content {
 	float: left;
 	width: calc(100% - 130px);
-	background: #dadada;
+	background: #ffffff;
+	overflow: auto;
 }
 
 
 .footer {
 	overflow: hidden;
 	border-top: 1px dashed grey;
-	background: #dadada;
+	background: var(--color_1);
 }
