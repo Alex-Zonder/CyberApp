@@ -7,7 +7,7 @@ class View {
 	//----------------------------------------------------------------------//
 	public $route;
 	public $path;
-	public static $layout = 'default';
+	public static $template = 'cyber1';
 
 
 	//----------------------------------------------------------------------//
@@ -34,7 +34,7 @@ class View {
 			ob_start();
 			require $path;
 			$content = ob_get_clean();
-			require 'app/views/layouts/' . self::$layout . '.php';
+			require 'templates/' . self::$template . '/index.php';
 		}
 		else {
 			View::errorCode('Не найден вид: ' . $path, 404, $this->user, $this->config['title']);
@@ -48,7 +48,7 @@ class View {
 	public static function errorCode($message = '', $code = 404, $user = false, $title = '') {
 		http_response_code($code);
 		$content = '<center><p><b><h3>Ошибка ' . $code . '<br>' . $message . '</h3></b></p></center>';
-		require 'app/views/layouts/' . self::$layout . '.php';
+		require 'templates/' . self::$template . '/index.php';
 		exit;
 	}
 

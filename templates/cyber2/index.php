@@ -52,7 +52,7 @@
 	<div class='float_clear'></div>
 	<div class='footer'>
 		<p style="text-align: center; margin: 5px 0;">
-			&copy; Киберлайт <?php echo date("Y");?> | Все права защищены.
+			&copy; <a href="http://cyber-light.ru/" target="_blank">Киберлайт</a> <?php echo date("Y");?> | Все права защищены.
 			<br>Тел.: <a href="tel:+7(495)507-9111">+7 (495) 507-9111</a>, E-mail: <a href="mailto:cyber-light@bk.ru">cyber-light@bk.ru</a>
 		</p>
 	</div>

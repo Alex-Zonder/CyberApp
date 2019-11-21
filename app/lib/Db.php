@@ -14,7 +14,7 @@ class Db {
 	//                             Конструктор                              //
 	//----------------------------------------------------------------------//
 	public function __construct($dbname = false) {
-		$config = require 'app/config/db.php';
+		$config = require 'config/db.php';
 		if ($dbname) $config['dbname'] = $dbname;
 		if (isset($config['enabled']) && $config['enabled'] == true) {
 			try {

@@ -38,7 +38,7 @@ class Users {
 			return $this->db->row($query);
 		}
 		// File //
-		else return require 'app/config/users.php';
+		else return require 'config/users.php';
 		//else return $this->fileMan->readFile($_SERVER['DOCUMENT_ROOT'] . '/app/config/users.php');
 	}
 

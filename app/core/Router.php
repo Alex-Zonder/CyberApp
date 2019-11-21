@@ -20,7 +20,7 @@ class Router {
 	//----------------------------------------------------------------------//
 	public function __construct() {
 		//   Load Config   //
-		$this->config = require 'app/config/app.php';
+		$this->config = require 'config/app.php';
 		//   Authorization   //
 		if (isset($this->config['authorize']))
 			$this->auth = new Authorize($this->config['authorize']);
@@ -28,7 +28,7 @@ class Router {
 			$this->auth = new Authorize();
 		//   Load Routes   //
 		$this->url = trim($_SERVER['REQUEST_URI'], '/');
-		$routes = require 'app/config/routes.php';
+		$routes = require 'config/routes.php';
 		foreach ($routes as $key => $value) {
 			$key = '#^' . $key . '$#';
 			$this->routes[$key] = $value;
