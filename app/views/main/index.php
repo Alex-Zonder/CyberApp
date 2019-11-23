@@ -18,3 +18,8 @@
 		<td><?php echo($_SERVER["REMOTE_ADDR"]); ?></td>
 	</tr>
 </table>
+
+<?php
+debug($_SERVER);
+debug($_SERVER);
+?>

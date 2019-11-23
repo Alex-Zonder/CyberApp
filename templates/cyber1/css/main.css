@@ -7,22 +7,22 @@
 	--color_2: #5a6a7a;
 	--color_3: #aaaaaa;
 	--text_color_1: black;
+	--text_color_2: white;
 }
 
 html{
-	height: 100%;
+	background: content-box radial-gradient(var(--color_1), var(--color_2));
 }
 body{
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 	-webkit-overflow-scrolling: touch;
 
-	max-width: var(--site-max-width);
-
 	background: content-box radial-gradient(var(--color_1), var(--color_2));
 	padding: 0px;
 	margin: 0px auto;
 
+	color: var(--text_color_1);
 	font-size:14px;
 	line-height: 1.6;
 	font-family:"Trebuchet MS", verdana, arial, "Times New Roman", serif;
@@ -30,7 +30,10 @@ body{
 
 
 
-
+.site_width {
+	max-width: var(--site-max-width);
+	margin: 0px auto;
+}
 .float_left {
 	float: left;
 }
@@ -46,29 +49,50 @@ body{
 
 
 /*			Main Blocks			*/
+.margin_header_height{margin-top: 26px;}
 .header {
+	height: 25px;
 	overflow: hidden;
-	border-bottom: 1px dashed grey;
-	background: var(--color_1);
+	border-bottom: 1px solid black;
+	background: var(--color_2);
+	z-index: 10;
+	color: var(--text_color_2);
+	font-weight: bold;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 
-
+#middleHolder{
+	/*position: fixed;
+	top: 26;
+	margin-left: calc((100% - var(--site-max-width)) / 2);*/
+	height: calc((var(--vh, 1vh) * 100) + 52px);
+	overflow: auto;
+}
 .left_menu {
-	background: var(--color_1);
+	position: fixed;
+	background: var(--color_3);
 	float: left;
 	width: 130px;
 }
 
 .content {
+	position: fixed;
 	float: left;
-	width: calc(100% - 130px);
+	/*width: calc(100% - 130px);*/
+	width: var(--site-max-width);
+	height: calc(100% - 52px);
 	background: #ffffff;
 	overflow: auto;
 }
 
 
 .footer {
-	overflow: hidden;
-	border-top: 1px dashed grey;
-	background: var(--color_1);
+	border-top: 1px solid black;
+	background: var(--color_2);
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 25px;
 }
