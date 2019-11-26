@@ -10,7 +10,8 @@
 	--text_color_2: white;
 }
 
-html{
+html, body{
+	height: 100%;
 	background: content-box radial-gradient(var(--color_1), var(--color_2));
 }
 body{
@@ -18,16 +19,24 @@ body{
 	-ms-text-size-adjust: 100%;
 	-webkit-overflow-scrolling: touch;
 
-	background: content-box radial-gradient(var(--color_1), var(--color_2));
 	padding: 0px;
 	margin: 0px auto;
 
-	color: var(--text_color_1);
-	font-size:14px;
-	line-height: 1.6;
-	font-family:"Trebuchet MS", verdana, arial, "Times New Roman", serif;
+	color: #636b6f;
+	font-family: 'Nunito', sans-serif;
+	font-weight: 200;
 }
-
+a {
+	color: #636b6f;
+	padding: 0 15px;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: .1rem;
+	text-decoration: none;
+}
+a:hover{
+	text-shadow: 2px 2px 3px #555;
+}
 
 
 .site_width {
@@ -46,7 +55,14 @@ body{
 .float_clear {
 	clear: both;
 }
-
+.d-flex{
+	height:100%;
+	display: flex;
+}
+.a-center{
+	align-items: center;
+	justify-content: center;
+}
 
 /*			Main Blocks			*/
 .margin_header_height{margin-top: 26px;}
@@ -62,19 +78,31 @@ body{
 	top: 0;
 	width: 100%;
 }
+.login_logout > a{
+	color: #fff;
+}
+.login_logout > a:hover{
+	text-shadow: 2px 2px 3px black;
+}
 
 #middleHolder{
 	/*position: fixed;
 	top: 26;
 	margin-left: calc((100% - var(--site-max-width)) / 2);*/
-	height: calc((var(--vh, 1vh) * 100) + 52px);
+	height: calc((var(--vh, 1vh) * 100) - 52px);
 	overflow: auto;
 }
 .left_menu {
 	position: fixed;
-	background: var(--color_3);
+	/*background: var(--color_3);*/
 	float: left;
 	width: 130px;
+}
+.left_menu > a{
+	color: #fff;
+}
+.left_menu > a:hover{
+	text-shadow: 2px 2px 3px black;
 }
 
 .content {

@@ -8,6 +8,9 @@
 	<link rel="shortcut icon" href="/public/images/favicon/favicon.gif" type="image/x-gif">
 	<link rel="apple-touch-icon" href="/public/images/favicon/iphone_icon.png">
 
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
 	<?php /*   Scripts   */ ?>
 	<script src="/public/scripts/useragent.js"></script>
 	<script src="/public/scripts/sizes.js"></script>
@@ -24,10 +27,10 @@
 	<div class='header' id="siteHeader">
 		<div class='site_width'>
 			<div class='float_left'><img src="/templates/cyber1/icons/menu.png" style="height:28px;" onclick="changeMenu()"></div>
-			<div class='float_right'>
+			<div class='login_logout float_right'>
 				<?php if (isset($user['name'])): ?>
 					<?php echo $user['name']; ?>
-					| <a href="/account/logout">Выход</a>
+					<a href="/account/logout"><img src="/templates/cyber1/icons/exit.png" style="height:15px; padding: 5px 0 0 0; margin: 0 -10px -3px 0;"></a>
 				<?php else: ?>
 					<a href="/account/login">Вход</a>
 				<?php endif; ?>
