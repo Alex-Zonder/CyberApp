@@ -17,9 +17,10 @@ class Db {
 		$config = require 'config/db.php';
 		if ($dbname) $config['dbname'] = $dbname;
 		if (isset($config['enabled']) && $config['enabled'] == true) {
+			$config['dbname'] = $config['dbname'] == '' ? '' : 'dbname=' . $config['dbname'];
 			try {
 				$this->db = new PDO(
-					$config['driver'] . ':host=' . $config['host'] . ';dbname=' . $config['dbname'],
+					$config['driver'] . ':host=' . $config['host'] . ';' . $config['dbname'],
 					$config['username'],
 					$config['password'],
 					array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING)
