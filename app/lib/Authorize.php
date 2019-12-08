@@ -1,9 +1,9 @@
 <?php
-namespace app\lib;
+namespace lib;
 
-use app\lib\Db;
-use app\lib\Users;
-use app\lib\FileManager;
+use lib\Db;
+use lib\Users;
+use lib\FileManager;
 
 class Authorize {
 	//----------------------------------------------------------------------//

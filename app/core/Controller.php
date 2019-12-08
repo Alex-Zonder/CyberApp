@@ -1,8 +1,8 @@
 <?php
-namespace app\core;
+namespace core;
 
-use app\core\View;
-use app\lib\Authorize;
+use core\View;
+use lib\Authorize;
 
 abstract class Controller {
 	//----------------------------------------------------------------------//

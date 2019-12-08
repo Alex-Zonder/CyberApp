@@ -6,13 +6,13 @@
  * Все шаги построения возвращают текущий объект строителя, чтобы обеспечить
  * цепочку: $builder->select(...)->where(...)
  */
-interface SQLQueryBuilder
+interface ISqlQueryBuilder
 {
-	public function select(string $table, array $fields): SQLQueryBuilder;
+	public function select(string $table, array $fields): ISqlQueryBuilder;
 
-	public function where(string $field, string $value, string $operator = '='): SQLQueryBuilder;
+	public function where(string $field, string $value, string $operator = '='): ISqlQueryBuilder;
 
-	public function limit(int $start, int $offset): SQLQueryBuilder;
+	public function limit(int $start, int $offset): ISqlQueryBuilder;
 
 	// +100 других методов синтаксиса SQL...
 
@@ -26,7 +26,7 @@ interface SQLQueryBuilder
  *
  * Этот Конкретный Строитель может создавать SQL-запросы, совместимые с MySQL.
  */
-class MysqlQueryBuilder implements SQLQueryBuilder
+class MysqlQueryBuilder implements ISqlQueryBuilder
 {
     protected $query;
 
@@ -38,7 +38,7 @@ class MysqlQueryBuilder implements SQLQueryBuilder
     /**
      * Построение базового запроса SELECT.
      */
-    public function select(string $table, array $fields = ["*"]): SQLQueryBuilder
+    public function select(string $table, array $fields = ["*"]): ISqlQueryBuilder
     {
         $this->reset();
         $this->query->base = "SELECT " . implode(", ", $fields) . " FROM " . $table;
@@ -50,7 +50,7 @@ class MysqlQueryBuilder implements SQLQueryBuilder
     /**
      * Добавление условия WHERE.
      */
-    public function where(string $field, string $value, string $operator = '='): SQLQueryBuilder
+    public function where(string $field, string $value, string $operator = '='): ISqlQueryBuilder
     {
         if (!in_array($this->query->type, ['select', 'update'])) {
             throw new \Exception("WHERE can only be added to SELECT OR UPDATE");
@@ -63,7 +63,7 @@ class MysqlQueryBuilder implements SQLQueryBuilder
     /**
      * Добавление ограничения LIMIT.
      */
-    public function limit(int $start, int $offset): SQLQueryBuilder
+    public function limit(int $start, int $offset): ISqlQueryBuilder
     {
         if (!in_array($this->query->type, ['select'])) {
             throw new \Exception("LIMIT can only be added to SELECT");
@@ -102,7 +102,7 @@ class PostgresQueryBuilder extends MysqlQueryBuilder
 	/**
 	 * Помимо прочего, PostgreSQL имеет несколько иной синтаксис LIMIT.
 	 */
-	public function limit(int $start, int $offset): SQLQueryBuilder
+	public function limit(int $start, int $offset): ISqlQueryBuilder
 	{
 		$this->query->limit = " LIMIT " . $start . " OFFSET " . $offset;
 
@@ -123,9 +123,9 @@ class PostgresQueryBuilder extends MysqlQueryBuilder
  * строка), мы можем взаимодействовать со всеми строителями, используя их общий
  * интерфейс. Позднее, если мы реализуем новый класс Строителя, мы сможем
  * передать его экземпляр существующему клиентскому коду, не нарушая его,
- * благодаря интерфейсу SQLQueryBuilder.
+ * благодаря интерфейсу ISqlQueryBuilder.
  */
-function clientCode(SQLQueryBuilder $queryBuilder)
+function clientCode(ISqlQueryBuilder $queryBuilder)
 {
     // ...
 

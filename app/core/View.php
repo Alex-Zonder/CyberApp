@@ -1,5 +1,5 @@
 <?php
-namespace app\core;
+namespace core;
 
 class View {
 	//----------------------------------------------------------------------//
@@ -7,7 +7,7 @@ class View {
 	//----------------------------------------------------------------------//
 	public $route;
 	public $path;
-	public static $template = 'cyber1';
+	public static $template = 'cyber3';
 
 
 	//----------------------------------------------------------------------//
@@ -29,12 +29,12 @@ class View {
 		$user = $this->user;
 		extract($vars);
 		// Render view //
-		$path = 'app/views/' . $this->path . '.php';
+		$path = dirname(__DIR__, 2) . '/app/views/' . $this->path . '.php';
 		if (file_exists($path)) {
 			ob_start();
 			require $path;
 			$content = ob_get_clean();
-			require 'public/templates/' . self::$template . '/index.php';
+			require dirname(__DIR__, 2) . '/public/templates/' . self::$template . '/index.php';
 		}
 		else {
 			View::errorCode('Не найден вид: ' . $path, 404, $this->user, $this->config['title']);
@@ -48,7 +48,7 @@ class View {
 	public static function errorCode($message = '', $code = 404, $user = false, $title = '') {
 		http_response_code($code);
 		$content = '<center><p><b><h3>Ошибка ' . $code . '<br>' . $message . '</h3></b></p></center>';
-		require 'public/templates/' . self::$template . '/index.php';
+		require dirname(__DIR__, 2) . '/public/templates/' . self::$template . '/index.php';
 		exit;
 	}
 

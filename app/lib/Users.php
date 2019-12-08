@@ -1,8 +1,8 @@
 <?php
-namespace app\lib;
+namespace lib;
 
-use app\lib\Db;
-use app\lib\FileManager;
+use lib\Db;
+use lib\FileManager;
 
 class Users {
 	//----------------------------------------------------------------------//
@@ -38,7 +38,7 @@ class Users {
 			return $this->db->row($query);
 		}
 		// File //
-		else return require 'config/users.php';
+		else return require dirname(__DIR__, 2) . '/config/users.php';
 		//else return $this->fileMan->readFile($_SERVER['DOCUMENT_ROOT'] . '/app/config/users.php');
 	}
 

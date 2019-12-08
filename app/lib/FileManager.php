@@ -1,5 +1,5 @@
 <?php
-namespace app\lib;
+namespace lib;
 
 class FileManager {
 	//----------------------------------------------------------------------//

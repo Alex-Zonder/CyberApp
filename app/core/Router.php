@@ -1,8 +1,8 @@
 <?php
-namespace app\core;
+namespace core;
 
-use app\core\View;
-use app\lib\Authorize;
+use core\View;
+use lib\Authorize;
 
 class Router {
 	//----------------------------------------------------------------------//
@@ -20,7 +20,7 @@ class Router {
 	//----------------------------------------------------------------------//
 	public function __construct() {
 		//   Load Config   //
-		$this->config = require 'config/app.php';
+		$this->config = require dirname(__DIR__, 2).'/config/app.php';
 		//   Authorization   //
 		if (isset($this->config['authorize']))
 			$this->auth = new Authorize($this->config['authorize']);
@@ -28,7 +28,7 @@ class Router {
 			$this->auth = new Authorize();
 		//   Load Routes   //
 		$this->url = trim($_SERVER['REQUEST_URI'], '/');
-		$routes = require 'config/routes.php';
+		$routes = require dirname(__DIR__, 2) . '/config/routes.php';
 		foreach ($routes as $key => $value) {
 			$key = '#^' . $key . '$#';
 			$this->routes[$key] = $value;
@@ -64,7 +64,7 @@ class Router {
 			}
 
 			// Load controller //
-			$path = 'app\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
+			$path = 'controllers\\' . ucfirst($this->params['controller']) . 'Controller';
 			if (class_exists($path)) {
 				$action = $this->params['action'].'Action';
 				if (method_exists($path, $action)) {

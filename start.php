@@ -1,7 +1,13 @@
 <?php
 // start.php
+/**
+ * To run
+ * start.php
+ * To run with params
+ * start.php host:127.0.0.1 port:8000 router:index.php
+ */
 
-$path = __DIR__;
+$path = __DIR__ . '/public';
 $host = 'localhost';
 $port = '90';
 $router = 'index.php';
@@ -10,9 +16,7 @@ $router = 'index.php';
 /**
  * Load arguments
  */
-//echo "Args:\n";
 foreach ($argv as $key => $value) {
-//	echo $key . ':' . $value . "\n";
 	$vals = explode(':', $value);
 	switch (isset($vals[1]) ? $vals[0] : $value) {
 		case 'host':
@@ -33,7 +37,6 @@ foreach ($argv as $key => $value) {
 //			break;
 	}
 }
-
 
 
 /**

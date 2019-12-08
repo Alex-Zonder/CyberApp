@@ -10,12 +10,12 @@ if (preg_match('/\.(?:js|css|png|jpg|jpeg|gif)$/', $_SERVER["REQUEST_URI"]))
 
 
 //   Включаем работу с ошибками   //
-require 'app/lib/dev.php';
+require dirname(__DIR__) . '/app/lib/dev.php';
 
 
 //   Автозагрузка файлов с классом   //
 spl_autoload_register(function($class) {
-	$path = str_replace('\\', '/', $class . '.php');
+	$path = dirname(__DIR__) . '/app/' . str_replace('\\', '/', $class) . '.php';
 	if (file_exists($path))
 		require $path;
 	// Debug if no file //
@@ -35,6 +35,6 @@ date_default_timezone_set('Europe/Moscow');
 
 
 //   Router   //
-use app\core\Router;
+use core\Router;
 $router = new Router;
 $router->run();

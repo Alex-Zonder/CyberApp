@@ -1,8 +1,8 @@
 <?php
-namespace app\controllers;
+namespace controllers;
 
-use app\core\Controller;
-use app\lib\Authorize;
+use core\Controller;
+use lib\Authorize;
 
 class AccountController extends Controller {
 	//----------------------------------------------------------------------//
