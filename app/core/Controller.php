@@ -18,7 +18,7 @@ abstract class Controller {
 	//                           Загрузка модели                            //
 	//----------------------------------------------------------------------//
 	public function loadModel($name) {
-		$path = 'app\models\\' . ucfirst($name);
+		$path = 'models\\' . ucfirst($name);
 		if (class_exists($path)) {
 			return new $path;
 		}

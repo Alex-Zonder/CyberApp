@@ -18,5 +18,6 @@ class AdminController extends Controller {
 		//$this->view->render('Главная страница', ['news'=>$news]);
 
 		$this->view->render('Главная страница');
+		//debug($this->model->migrate());
 	}
 }
